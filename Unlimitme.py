@@ -73,128 +73,6 @@ class gui(Frame):
 		
 		frame4 = Frame(self)
 		frame4.pack(fill=X)
-		
-		listbox = Listbox(frame4,width= 30)
-		listbox.pack(side=TOP,padx=5,pady=5)
-		
-		frame5 = Frame(self)
-		frame5.pack(fill=X)
-		
-		sendbtn = Button(frame5,text="Send",width=15,command=lambda: self.sendMessage(msgtxt.get(),tkntxt.get(),cidtxt.get()) & listbox.insert(END,"You: "+msgtxt.get()))
-		sendbtn.pack(side=RIGHT,padx=5,pady=5)
-		
-		imgbtn = Button(frame5,text="Send a Photo",width=15,command=lambda: self.sendImage(imgtxt.get(),tkntxt.get(),cidtxt.get()))
-		imgbtn.pack(side=LEFT,padx=5,pady=5)
-		
-		savebtn = Button(frame5,text="Save CID & Token",width=15,command=lambda: self.saveall(tkntxt.get(),cidtxt.get()))
-		savebtn.pack(side=LEFT,padx=5,pady=5)
-		
-		frame6 = Frame(self)
-		frame6.pack(fill=X,expand=True)
-		
-		abtlbl = Label(frame6,text="Created by Habb0n - (c) 2016 - Using Python & Tkinter",width=50)
-		abtlbl.pack(side=BOTTOM,anchor=N,padx=1,pady=1)
-
-	def chatids(self):
-		url =  "https://api.telegram.org/bot" + token + "/getUpdates"
-		response = urllib2.urlopen(url).read()
-		response = json.loads(response)
-
-	
-	def loadtoken(self):
-		tokenfile = "token.txt"
-		if os.path.exists(tokenfile) != True:
-			token = "Paste Bot Token here."
-		else:
-			stoken = open(tokenfile,'r')
-			token = stoken.read()
-		return token
-		
-	def loadcid(self):
-		cidfile = "cid.txt"
-		if os.path.exists(cidfile) != True:
-			cid="Paste Chat ID here."
-		else:
-			scid = open(cidfile,'r')
-			cid = scid.read()
-		return cid
-	
-	def sendMessage(self,message,token,cid):
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
-
-"""
-With this little script we
-can send message to telegram
-trough a bot we've created with
-@BotFather on telegram.
-Useful if you are limited
-
-Author: Habb0n
-Last modified: October 2016
-Github: https://github.com/GooogIe
-"""
-
-import urllib2
-import os.path
-import json
-from Tkinter import *
-from ttk import Frame,Label,Entry
-import tkMessageBox
-
-class gui(Frame):
-	def __init__(self,master):
-		Frame.__init__(self,master)
-		self.master = master
-		self.initUI()
-	
-	def initUI(self):
-		self.master.title("Telegram UnlimitMe")
-		self.master.minsize(width=300,height=130)
-		self.pack(fill=BOTH,expand=True)
-		
-		frame1 = Frame(self)
-		frame1.pack(fill=X)
-
-		tknlbl = Label(frame1,text="Token",width=7)
-		tknlbl.pack(side=LEFT,padx=5,pady=5)
-		
-		tkntxt = Entry(frame1)
-		tkntxt.pack(fill=X,padx=5,expand = True)
-		tkntxt.insert(0,self.loadtoken())
-		
-		frame2 = Frame(self)
-		frame2.pack(fill=X)
-		
-		cidlbl = Label(frame2,text="Chat ID",width=7)
-		cidlbl.pack(side=LEFT,padx=5,pady=5)
-		
-		cidtxt = Entry(frame2)
-		cidtxt.pack(fill=X,padx=5,expand=True)
-		cidtxt.insert(0,self.loadcid())
-		
-		frame3 = Frame(self)
-		frame3.pack(fill=X)
-		
-		msglbl = Label(frame3,text="Message",width=8)
-		msglbl.pack(side=LEFT,anchor=N,padx=5,pady=5)
-		
-		msgtxt = Entry(self,width=30)
-		msgtxt.insert(0,"Message to be sent here")
-		msgtxt.pack(fill=BOTH,padx=5,pady=2)
-		
-		frame7 = Frame(self)
-		frame7.pack(fill=X)
-		
-		imglbl = Label(frame7,text="Image Source",width=15)
-		imglbl.pack(side=LEFT,anchor=N,padx=5,pady=5)
-		
-		imgtxt = Entry(self,width=30)
-		imgtxt.insert(0,"http://www.photo.it/ok.png")
-		imgtxt.pack(fill=BOTH,padx=5,pady=2)
-		
-		frame4 = Frame(self)
-		frame4.pack(fill=X)
 
 		cidslbl = Label(frame4,text="Chat IDS found: \n"+chatids(tkntxt.get()),width=15)
 		cidslbl.pack(side=LEFT,anchor=N,padx=5,pady=5)
@@ -272,7 +150,7 @@ def chatids(token):
 		try:
 			id = response['result'][i]['message']['chat']['id']
 		except KeyError, e: #Thanks to @Aya - http://stackoverflow.com/questions/16154032/catch-keyerror-in-python
-    			print 'I got a KeyError - reason "%s"' % str(e)
+    			print 'Alert - Got a KeyError - reason "%s"' % str(e)
 		if id not in cids and id <0:
 			cids.append(id)
 		else:
@@ -284,7 +162,6 @@ def main():
 
 	req_version = (2,10)
 	cur_version = sys.version_info
-	print cur_version
 	if cur_version < req_version:
 		root = Tk()
 		try:
