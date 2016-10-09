@@ -1,4 +1,7 @@
 # UnlimitMe #
+<p align="center"><img src="http://image.prntscr.com/image/04456599e3564fa7853c59ce385d3ea1.png" /</p>
+
+
 A Telegram utility, which allow you to send messages from a Telegram bot, useful if you are limited.
 A simple GUI, and a bunch of lines of code.
 
@@ -45,8 +48,8 @@ Getting the Chat ID of the Group where you want to send messages.
 Once you're done with setup, getting token and chat ID just follow those simple steps:
 
 * If you have not started UnlimitMe yet start it by running the Start.bat file
-* Now paste the Chat ID on it's textbox ( [Screenshot](http://prntscr.com/crmjwg)
-* Paste the bot Token on it's textbot ( [Screenshot](http://prntscr.com/crmk8k)
+* Now paste the Chat ID on it's textbox [(Screenshot)](http://prntscr.com/crmjwg)
+* Paste the bot Token on it's textbot [(Screenshot)] (http://prntscr.com/crmk8k)
 * Now click on Save CID(Chat ID) & Token button
 * Next time you'll run the bot it will auotmagically load the bot token and the chat id on it's respectives textboxes.
 * Now you're ready to rock!
