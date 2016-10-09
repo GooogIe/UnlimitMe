@@ -31,13 +31,18 @@ Running the tool from the exe
 Once you have everything you need follow those steps:
 
 * Go to the chat group where you want the Bot to send messages.
-* Add the Telegram BOT to the group or ask someone to do it for you.
+* Add the Telegram BOT you've created to the group or ask someone to do it for you.
 * Send a dummy message to the bot (EX: /start@YourBot_bot)
 * Now go to the [releases](https://github.com/GooogIe/UnlimitMe/releases) page.
 * Download the latest Compiled Version available [(Screenshot)](http://image.prntscr.com/image/d3295f0a408f4aedad4b839a8ae82b33.png)
 * Extract it in a folder.
 * And run UlimitMe.exe [(Screenshot)](http://image.prntscr.com/image/a289c83bdaee4e59b98117dd902b26e4.png)
-* Once opened paste in the 'Token' textbox the token copied before.
+
+# Running UnlimitMe #
+
+Once you're done with setup, getting token and chat ID just follow those simple steps:
+
+* Once opened the tool, paste in the 'Token' textbox the token copied before.
 * Click on 'Save CIDs & Token' .
 * Click on Reload CIDs.
 * Copy the Chat ID that you need to the Chat id Textbox.
@@ -81,8 +86,10 @@ or
 
 Getting the Chat ID of the Group where you want to send messages.
 
+If the auto chat ids loader doesn't find the chat id you was looking for you may have to do it manually.
+
 * Go to the chat group where you want the Bot to send messages.
-* Add the Telegram BOT to the group or ask someone to do it for you.
+* Add the Telegram BOT you've created to the group or ask someone to do it for you.
 * Send a dummy message to the bot (EX: /start@YourBot_bot)
 * Copy the Bot Token to clipboard
 * Get the list of updates for your Bot by going to https://api.telegram.org/botXXX:YYYY/getUpdates (Replace XXX:YYYY with your Bot token)
@@ -90,19 +97,18 @@ Getting the Chat ID of the Group where you want to send messages.
 * Then you're done, your chat ID is the negative number.
 * You can test it using curl curl -X POST "https://api.telegram.org/botXXX:YYYY/sendMessage" -d "chat_id=-zzzzzzzzzz&text=my sample text"
 
-
-# Using UnlimitMe #
+# Running UnlimitMe #
 
 Once you're done with setup, getting token and chat ID just follow those simple steps:
 
-* If you have not started UnlimitMe yet start it by running the Start.bat file
-* Now paste the Chat ID on it's textbox [(Screenshot)](http://prntscr.com/crmjwg)
-* Paste the bot Token on it's textbot [(Screenshot)] (http://prntscr.com/crmk8k)
-* Now click on Save CID(Chat ID) & Token button
-* Next time you'll run the bot it will auotmagically load the bot token and the chat id on it's respectives textboxes.
-* Now you're ready to rock!
+* Once opened paste in the 'Token' textbox the token copied before.
+* Click on 'Save CIDs & Token' .
+* Click on Reload CIDs.
+* Copy the Chat ID that you need to the Chat id Textbox.
+* Type the message you want and click on the Send Button
+* Done
 
-
+***
 # More #
 
 You can find me on:
