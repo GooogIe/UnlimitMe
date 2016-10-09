@@ -88,6 +88,7 @@ class gui(Frame):
 		
 
 		sendbtn = Button(frame5,relief=FLAT,bg="#2ECC71",text="Send",font=("Helvetica", 10),fg="#ffffff",width=15,command=lambda: self.sendMessage(msgtxt.get(),tkntxt.get(),cidtxt.get()) & listbox.insert(END,"You: "+msgtxt.get()))
+		sendbtn.bind("<Return>",lambda x: self.sendMessage(msgtxt.get(),tkntxt.get(),cidtxt.get())& listbox.insert(END,"You: "+msgtxt.get()))
 		sendbtn.pack(side=RIGHT,padx=5,pady=5)
 		
 		imgbtn = Button(frame5,relief=FLAT,bg="#1ABC9C",text="Send a Photo",font=("Helvetica", 10),fg="#ffffff",width=15,command=lambda: self.sendImage(imgtxt.get(),tkntxt.get(),cidtxt.get()))
@@ -126,7 +127,7 @@ class gui(Frame):
 
 	
 	def sendMessage(self,message,token,cid):
-		chatids(token)
+		message = message.encode('utf-8')
 		try:
 			url =  "https://api.telegram.org/bot" + token + "/sendMessage?text=" + message + "&chat_id=" + cid+"&parse_mode=Markdown"
 			urllib2.urlopen(url).read()
