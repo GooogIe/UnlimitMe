@@ -9,7 +9,7 @@ A simple GUI, and a bunch of lines of code.
 
 This is a python script that allow you to:
 
-* Send messages in groups even if you are limited.
+* Send messages (even with markdown *,_ etc...) in groups even if you are limited.
 * Send images in groups even if you are limited.
 * Send stickers,documents in groups even if you are limited (Will be added SOON!).
 
