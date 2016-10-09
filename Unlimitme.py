@@ -175,7 +175,6 @@ def chatids(token):
 			else:
 				pass
 			i +=1
-		print '\n'.join(cids)
 		return '\n'.join(cids)
 	else:
 		return "Please provide a token before."
