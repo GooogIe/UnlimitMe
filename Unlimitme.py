@@ -138,7 +138,7 @@ class gui(Frame):
 			url =  "https://api.telegram.org/bot" + token + "/sendPhoto?chat_id=" + cid+"&photo=" +image
 			urllib2.urlopen(url).read()
 		except:
-			tkMessageBox.showinfo('Telegram UlimitMe',"Couldn'tt send image.\nHave you checked that the token and chat id that you're using are valid?\nis the url you provided ending with the image format(.png,.jpg etc...)?")
+			tkMessageBox.showinfo('Telegram UlimitMe',"Couldn't send image.\nHave you checked that the token and chat id that you're using are valid?\nis the url you provided ending with the image format(.png,.jpg etc...)?")
 		
 	def saveall(self,token,cid):
 		fcid = open('cid.txt','w+')
@@ -151,8 +151,11 @@ class gui(Frame):
 def chatids(token):
 	if os.path.exists("token.txt") == True:
 		url =  "https://api.telegram.org/bot" + token + "/getUpdates"
-		response = urllib2.urlopen(url).read()
-		response = json.loads(response)
+		try:
+			response = urllib2.urlopen(url).read()
+			response = json.loads(response)
+		except:
+			tkMessageBox.showinfo('Telegram UnlimitMe',"Couldn't get Updates, probably expired token")
 		cids = []
 		i = 0
 		while i< len(response['result']):
