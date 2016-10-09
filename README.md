@@ -1,5 +1,5 @@
 # UnlimitMe #
-<p align="center"><img src="http://image.prntscr.com/image/04456599e3564fa7853c59ce385d3ea1.png" /</p>
+<p align="center"><img src="http://image.prntscr.com/image/81904bce629e4e50ac7fefb3284e4dc6.png" /</p>
 
 
 A Telegram utility, which allow you to send messages from a Telegram bot, useful if you are limited.
@@ -15,10 +15,45 @@ This is a python script that allow you to:
 
 ***
 
+# Using UnlimitMe from the Compiled Version (.exe) #
+
+Running the tool from the exe
+
+# Requirements #
+
+[How to create a Telegram BOT](https://core.telegram.org/bots#3-how-do-i-create-a-bot)
+
+* Brain
+* The bot Token (Given to you by @BotFather) 
+
+# How do I get set up? #
+
+Once you have everything you need follow those steps:
+
+* Go to the chat group where you want the Bot to send messages.
+* Add the Telegram BOT to the group or ask someone to do it for you.
+* Send a dummy message to the bot (EX: /start@YourBot_bot)
+* Now go to the [releases](https://github.com/GooogIe/UnlimitMe/releases) page.
+* Download the latest Compiled Version available [(Screenshot)](http://image.prntscr.com/image/d3295f0a408f4aedad4b839a8ae82b33.png)
+* Extract it in a folder.
+* And run UlimitMe.exe [(Screenshot)](http://image.prntscr.com/image/a289c83bdaee4e59b98117dd902b26e4.png)
+* Once opened paste in the 'Token' textbox the token copied before.
+* Click on 'Save CIDs & Token' .
+* Click on Reload CIDs.
+* Copy the Chat ID that you need to the Chat id Textbox.
+* Type the message you want and click on the Send Button
+* Done
+
+***
+
+# Using UnlimitMe from the sources #
+
+Running the tool from the sources
+
 # Requirements #
 
 * Python (any version under 3.*) installed on your PC(Linux, OSX,Windows).
-* A Telegram Boy (Create one using @BotFather on telegram).
+* A Telegram Bot (Create one using @BotFather on telegram).
 * The Bot Token (Given to you by the @BotFather).
 * Brain.
 
