@@ -27,6 +27,7 @@ This is a python script that allow you to:
 * Install [Python 2.*](https://www.python.org/download/releases/2.7/) or newer(i use 2.7.11)
 * Clone this repository anywhere on your computer.
 * Now, move to the directory where you saved the repo.
+
 Running it from Windows:
 
 * Run 'Start.bat'.
