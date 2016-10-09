@@ -33,7 +33,7 @@ Running it from Windows:
 * Run 'Start.bat'.
 
 Running it from Linux:
-Once moved to the directory where you cloned the repo type:
+Once moved to the directory where you cloned the repo with the terminal type:
 
 * chmod +x Start.sh
 * ./Start.sh
