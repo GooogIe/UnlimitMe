@@ -78,4 +78,4 @@ You can find me on:
 Useful links:
 
 * A more detailed guide on: [Creating a Telegram BOT](https://core.telegram.org/bots#3-how-do-i-create-a-bot)
-* [Other useful Tools](http://neonn.ga)
+* [Other useful Tools](http://neonn.ga/tgtools)
