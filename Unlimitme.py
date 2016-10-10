@@ -19,6 +19,7 @@ import json
 from Tkinter import *
 from ttk import Frame,Label,Entry
 import tkMessageBox
+import time
 
 class gui(Frame):
 	def __init__(self,master):
@@ -28,7 +29,7 @@ class gui(Frame):
 	
 	def initUI(self):
 		self.master.title("Telegram UnlimitMe")
-		self.master.minsize(width=500,height=130)
+		self.master.minsize(width=500,height=300)
 		self.pack(fill=BOTH,expand=True)
 		
 		frame1 = Frame(self)
@@ -57,9 +58,19 @@ class gui(Frame):
 		msglbl = Label(frame3,text="Message",width=8,font=("Helvetica", 10))
 		msglbl.pack(side=LEFT,anchor=N,padx=5,pady=5)
 		
-		msgtxt = Entry(self,width=30,font=("Helvetica", 10))
-		msgtxt.insert(0,"Message to be sent here")
+		msgtxt = Entry(frame3,width=30,font=("Helvetica", 10))
+		msgtxt.insert(0,"UnlimitMe script by (Gooogle)[https://github.com/GooogIe/UnlimitMe]")
 		msgtxt.pack(fill=BOTH,padx=5,pady=2)
+		
+		frame8 = Frame(self)
+		frame8.pack(fill=X)
+		
+		tmslbl = Label(frame8,text="Spam times",width=10,font=("Helvetica", 10))
+		tmslbl.pack(side=LEFT,anchor=N,padx=5,pady=5)
+		
+		tmstxt = Entry(frame8,width=30,font=("Helvetica", 10))
+		tmstxt.insert(0,"5")
+		tmstxt.pack(fill=BOTH,padx=5,pady=2)
 		
 		frame7 = Frame(self)
 		frame7.pack(fill=X)
@@ -76,7 +87,7 @@ class gui(Frame):
 
 
 		x = StringVar()
-		x.set("Chat IDS found: \n"+chatids(tkntxt.get()))
+		x.set("Chat IDS found: \n"+str(chatids(tkntxt.get())))
 		cidslbl = Label(frame4,textvariable=x,width=40,font=("Helvetica", 10))
 		cidslbl.pack(side=LEFT,anchor=N,padx=5,pady=5)
 		
@@ -86,9 +97,10 @@ class gui(Frame):
 		frame5 = Frame(self)
 		frame5.pack(fill=X)
 		
+		spambtn = Button(frame5,relief=FLAT,bg="#1EFE7B",text="Spam",font=("Helvetica", 10),fg="#ffffff",width=15,command=lambda: self.flood(tmstxt.get(),msgtxt.get(),tkntxt.get(),cidtxt.get()) )
+		spambtn.pack(side=RIGHT,padx=5,pady=5)
 
 		sendbtn = Button(frame5,relief=FLAT,bg="#2ECC71",text="Send",font=("Helvetica", 10),fg="#ffffff",width=15,command=lambda: self.sendMessage(msgtxt.get(),tkntxt.get(),cidtxt.get()) & listbox.insert(END,"You: "+msgtxt.get()))
-		sendbtn.bind("<Return>",lambda x: self.sendMessage(msgtxt.get(),tkntxt.get(),cidtxt.get())& listbox.insert(END,"You: "+msgtxt.get()))
 		sendbtn.pack(side=RIGHT,padx=5,pady=5)
 		
 		imgbtn = Button(frame5,relief=FLAT,bg="#1ABC9C",text="Send a Photo",font=("Helvetica", 10),fg="#ffffff",width=15,command=lambda: self.sendImage(imgtxt.get(),tkntxt.get(),cidtxt.get()))
@@ -125,6 +137,11 @@ class gui(Frame):
 			cid = scid.read()
 		return cid
 
+	def flood(self,times,message,token,cid):
+		i =0
+		while i<int(times):
+			self.sendMessage(message,token,cid)
+			i +=1
 	
 	def sendMessage(self,message,token,cid):
 		message = message.encode('utf-8')
@@ -139,7 +156,7 @@ class gui(Frame):
 			url =  "https://api.telegram.org/bot" + token + "/sendPhoto?chat_id=" + cid+"&photo=" +image
 			urllib2.urlopen(url).read()
 		except:
-			tkMessageBox.showinfo('Telegram UlimitMe',"Couldn't send image.\nHave you checked that the token and chat id that you're using are valid?\nis the url you provided ending with the image format(.png,.jpg etc...)?")
+			tkMessageBox.showinfo('Telegram UlimitMe',"Couldn'tt send image.\nHave you checked that the token and chat id that you're using are valid?\nis the url you provided ending with the image format(.png,.jpg etc...)?")
 		
 	def saveall(self,token,cid):
 		fcid = open('cid.txt','w+')
@@ -152,26 +169,24 @@ class gui(Frame):
 def chatids(token):
 	if os.path.exists("token.txt") == True:
 		url =  "https://api.telegram.org/bot" + token + "/getUpdates"
-		try:
-			response = urllib2.urlopen(url).read()
-			response = json.loads(response)
-		except:
-			tkMessageBox.showinfo('Telegram UnlimitMe',"Couldn't get Updates, probably expired token")
+		response = urllib2.urlopen(url).read()
+		response = json.loads(response)
 		cids = []
 		i = 0
 		while i< len(response['result']):
 			try:
 				id = response['result'][i]['message']['chat']['id']
 				name = response['result'][i]['message']['chat']['title']
+				id = str(id)+":"+name.encode('ascii', 'ignore')
+				idcomp = id.split(':',1)
+				idint = int(idcomp[0])
+				if id not in cids and idint <0 :
+					cids.append(id)
+				else:
+					pass	
+				
 			except KeyError, e: #Thanks to @Aya - http://stackoverflow.com/questions/16154032/catch-keyerror-in-python
-    				pass
-			id = str(id)+":"+name.encode('ascii', 'ignore')
-			idcomp = id.split(':',1)
-			idint = int(idcomp[0])
-			if id not in cids and idint <0 :
-				cids.append(id)
-			else:
-				pass	
+				pass
 			i +=1
 		i =0
 		return '\n'.join(cids)
@@ -184,6 +199,7 @@ def main():
 	cur_version = sys.version_info
 	if cur_version < req_version:
 		root = Tk()
+		root.configure(background="black")
 		try:
 			root.iconbitmap('py.ico')
 		except:
@@ -193,8 +209,6 @@ def main():
 		root.mainloop()
 	else:
 		print "Your Python interpreter is too new. Please consider downgrading to 2.10 or older."
-
-		
 
 if __name__ == '__main__':
     main()
