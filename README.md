@@ -5,6 +5,8 @@
 A Telegram utility, which allow you to send messages from a Telegram bot, useful if you are limited.
 A simple GUI, and a bunch of lines of code.
 
+I am still a newbie with Python tkinter and git, i apologize for anything, bad code or something, any help is REALLY appreciated.
+
 # What is this repository for? #
 
 This is a python script that allow you to:
