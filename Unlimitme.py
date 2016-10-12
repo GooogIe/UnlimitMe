@@ -199,7 +199,6 @@ def main():
 	cur_version = sys.version_info
 	if cur_version < req_version:
 		root = Tk()
-		root.configure(background="black")
 		try:
 			root.iconbitmap('py.ico')
 		except:
