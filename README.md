@@ -122,4 +122,3 @@ Useful links:
 
 * Check my Unlimit Brother in C# [here](https://github.com/neon-loled/UnlimiTG)
 * A more detailed guide on: [Creating a Telegram BOT](https://core.telegram.org/bots#3-how-do-i-create-a-bot)
-* [Other useful Tools](http://neonn.ga/tgtools)
